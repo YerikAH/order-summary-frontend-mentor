@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap");
+$Pale-blue: hsl(225, 100%, 94%);
+$Bright-blue: hsl(245, 75%, 52%);
+$Very-pale-blue: hsl(225, 100%, 98%);
+$Desaturated-blue: hsl(224, 23%, 55%);
+$Dark-blue: hsl(223, 47%, 23%);
+$White: hsl(255, 100%, 100%);
+
+html {
+  overflow-x: hidden;
+}
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Red Hat Display", sans-serif;
+}
+@mixin buttons {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 0.75em;
+  margin-bottom: 1rem;
+  font-weight: 900;
+  transition: 0.3s;
+}
+main {
+  background-color: $Pale-blue;
+}
+.bg {
+  background-image: url("../assets/pattern-background-mobile.svg");
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  position: fixed;
+  background-size: contain;
+  @media (min-width: 710px) {
+    background-image: url("../assets/pattern-background-desktop.svg");
+  }
+}
+
+.center-modal {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 0 2rem;
+  overflow: auto;
+}
+.modal {
+  max-width: 350px;
+  background: $White;
+  border-radius: 1.5em;
+  .modal-image {
+    img {
+      width: 100%;
+      border-radius: 1.5em 1.5em 0 0;
+    }
+  }
+  .modal-text {
+    padding: 1rem;
+    text-align: center;
+    h2 {
+      color: $Dark-blue;
+    }
+    p {
+      color: $Desaturated-blue;
+      margin-top: 1rem;
+      font-weight: 500;
+      line-height: 25px;
+    }
+  }
+  .modal-bills {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    .modal-bills__box {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      background-color: $Very-pale-blue;
+      padding: 1rem;
+      border-radius: 0.95em;
+      .modal-bills__box__one {
+        display: flex;
+        align-items: center;
+        .modal-bills__box__grid {
+          display: grid;
+          margin-left: 1rem;
+          b {
+            color: $Dark-blue;
+          }
+          span {
+            color: $Desaturated-blue;
+            font-size: 0.9rem;
+            font-weight: 500;
+          }
+        }
+      }
+      a {
+        color: $Bright-blue;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        transition: 0.3s;
+      }
+      a:hover {
+        color: #766cf1;
+      }
+    }
+  }
+  .modal-btns {
+    margin-top: 2rem;
+    display: grid;
+    width: 100%;
+    padding: 0 1rem;
+    .modal-btns-one {
+      @include buttons;
+      color: $White;
+      background-color: $Bright-blue;
+      box-shadow: 0px 6px 17px rgba(56, 42, 225, 0.65);
+    }
+    .modal-btns-two {
+      @include buttons;
+      background: transparent;
+      color: $Desaturated-blue;
+    }
+    .modal-btns-one:hover {
+      background-color: #766cf1;
+      box-shadow: 0px 6px 17px #766cf1;
+    }
+    .modal-btns-two:hover {
+      color: $Dark-blue;
+    }
+  }
+  @media (min-width: 410px) {
+    .modal-btns {
+      padding: 0 2rem;
+    }
+    .modal-bills {
+      padding: 0 2rem;
+    }
+    .modal-text {
+      padding: 2rem 2.5rem;
+    }
+  }
+  @media (min-width: 710px) {
+    max-width: 400px;
+  }
+}
